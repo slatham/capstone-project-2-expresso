@@ -47,5 +47,23 @@ const getAllMenus = () => {
     });
   });
 };
+
+const getById = (model, id) => {
+  return new Promise((resolve, reject) => {
+    db.get(`SELECT * FROM ${model} WHERE id = ${id}`, (err, row) => {
+      if (err) {
+        // create new error object
+        const e = new Error('Item not found!');
+        e.status = 404; // set a status on it
+        e.body = err; // add the err message as a body
+        return reject(e); // return a rejected promise
+      }
+      // all is well resolve the promise
+      resolve(row);
+    });
+  });
+};
+
+
 // export the functions to be used elsewhere
-module.exports = {getAllEmployees, getAllMenus};
+module.exports = {getAllEmployees, getAllMenus, getById};

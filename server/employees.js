@@ -14,6 +14,27 @@ module.exports = employeesRouter;
 // database functions
 const db = require('./sql');
 
+// router parameter function to parse id passed in all routes
+employeesRouter.param('id', async (req, res, next, id) => {
+  try {
+    // try running async function
+    const results = await db.getById('Employee', id);
+    if (results) {
+      // add the results onto the request object
+      req.employeeReturned = results;
+      next();
+    } else {
+      // create new error object
+      const e = new Error('Employee not found!');
+      e.status = 404; // set a status on it
+      e.body = err; // add the err message as a body
+      return next(e); // return a rejected promise
+    }
+  } catch (e) {
+    next(e); // catch any errors returned and forward to error handler
+  };
+});
+
 // route to return all employees
 employeesRouter.get('/', async (req, res, next) => {
   try {
@@ -25,3 +46,10 @@ employeesRouter.get('/', async (req, res, next) => {
     next(e); // catch any errors returned and forward to error handler
   }
 });
+
+// route to get an individual employee.
+employeesRouter.get('/:id', (req, res, next) => {
+  // return the employee pulled using the router parameter function
+  res.status(200).json({employee: req.employeeReturned});
+});
+
