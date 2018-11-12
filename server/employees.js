@@ -19,6 +19,8 @@ employeesRouter.use('/:id/timesheets', timesheetsRouter);
 // require the sql file with all the
 // database functions
 const db = require('./sql');
+// import helper functions
+const hlp = require('./helperFunctions');
 
 // router parameter function to parse id passed in all routes
 employeesRouter.param('id', async (req, res, next, id) => {
@@ -59,6 +61,16 @@ employeesRouter.get('/:id', (req, res, next) => {
 });
 
 // POST
+employeesRouter.post('/', async (req, res, next) => {
+  try {
+    // try running async function
+    const results = await db.addNewEmployee(req.body);
+    // return the results from the promise
+    return res.status(201).json({employee: results});
+  } catch (e) {
+    next(e); // catch any errors returned and forward to error handler
+  };
+});
 
 // PUT
 

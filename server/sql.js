@@ -106,7 +106,68 @@ const getById = (model, id) => {
   });
 };
 
+// add a new employee to the database
+const addNewEmployee = (post) => {
+  return new Promise((resolve, reject) => {
+    db.run(`INSERT INTO Employee (name,position,wage,is_current_employee) 
+      VALUES ($name,$position,$wage,$is_current_employee)`, {
+      $name: post.employee.name,
+      $position: post.employee.position,
+      $wage: post.employee.wage,
+      $is_current_employee: post.employee.isCurrentEmployee,
+    }, function(err) {
+      if (err) {
+      // create new error object
+        const e = new Error('Employee not added!');
+        e.status = 500; // set a status on it
+        e.body = err; // add the err message as a body
+        return reject(e); // return a rejected promise
+      }
+      // send back the new employee
+      db.get('SELECT * FROM Employee WHERE id = $id', {$id: this.lastID},
+          function(err, row) {
+            if (err) {
+            // create new error object
+              const e = new Error('New employee not found!');
+              e.status = 404; // set a status on it
+              e.body = err; // add the err message as a body
+              return reject(e); // return a rejected promise
+            }
+            resolve(row);
+          });
+    });
+  });
+};
+
+// add a new menu to the database
+const addNewMenu = (post) => {
+  return new Promise((resolve, reject) => {
+    db.run(`INSERT INTO Menu (title) VALUES ($title)`, {
+      $title: post.menu.title,
+    }, function(err) {
+      if (err) {
+      // create new error object
+        const e = new Error('Menu not added!');
+        e.status = 500; // set a status on it
+        e.body = err; // add the err message as a body
+        return reject(e); // return a rejected promise
+      }
+      // send back the new menu
+      db.get('SELECT * FROM Menu WHERE id = $id', {$id: this.lastID},
+          function(err, row) {
+            if (err) {
+            // create new error object
+              const e = new Error('New menu not found!');
+              e.status = 404; // set a status on it
+              e.body = err; // add the err message as a body
+              return reject(e); // return a rejected promise
+            }
+            resolve(row);
+          });
+    });
+  });
+};
 
 // export the functions to be used elsewhere
 module.exports = {getAllEmployees, getAllMenus, getAllTimesheets,
-  getAllMenuItems, getById};
+  getAllMenuItems, getById, addNewEmployee, addNewMenu};
