@@ -28,7 +28,6 @@ menuItemsRouter.param('id', async (req, res, next, id) => {
       // create new error object
       const e = new Error('MenuItem not found!');
       e.status = 404; // set a status on it
-      e.body = err; // add the err message as a body
       return next(e); // return a rejected promise
     }
   } catch (e) {

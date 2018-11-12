@@ -33,7 +33,6 @@ employeesRouter.param('id', async (req, res, next, id) => {
       // create new error object
       const e = new Error('Employee not found!');
       e.status = 404; // set a status on it
-      e.body = err; // add the err message as a body
       return next(e); // return a rejected promise
     }
   } catch (e) {
@@ -59,3 +58,8 @@ employeesRouter.get('/:id', (req, res, next) => {
   res.status(200).json({employee: req.employeeReturned});
 });
 
+// POST
+
+// PUT
+
+// DELETE
