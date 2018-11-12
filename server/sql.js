@@ -48,6 +48,48 @@ const getAllMenus = () => {
   });
 };
 
+// function to return all timesheets for a given employee
+const getAllTimesheets = (employeeId) => {
+  // set up and return a promise
+  return new Promise((resolve, reject) => {
+    // run the db query
+    db.all(`SELECT * FROM Timesheet WHERE employee_id = $id
+      `, {$id: employeeId}, (err, rows) => {
+      // check for an error
+      if (err) {
+        // create new error object
+        const e = new Error('Timesheets not found!');
+        e.status = 404; // set a status on it
+        e.body = err; // add the err message as a body
+        return reject(e); // return a rejected promise
+      }
+      // all was well, resolve the promise
+      resolve(rows);
+    });
+  });
+};
+
+// function to return all timesheets for a given employee
+const getAllMenuItems = (menuId) => {
+  // set up and return a promise
+  return new Promise((resolve, reject) => {
+    // run the db query
+    db.all(`SELECT * FROM MenuItem WHERE menu_id = $id
+      `, {$id: menuId}, (err, rows) => {
+      // check for an error
+      if (err) {
+        // create new error object
+        const e = new Error('MenuItems not found!');
+        e.status = 404; // set a status on it
+        e.body = err; // add the err message as a body
+        return reject(e); // return a rejected promise
+      }
+      // all was well, resolve the promise
+      resolve(rows);
+    });
+  });
+};
+
 const getById = (model, id) => {
   return new Promise((resolve, reject) => {
     db.get(`SELECT * FROM ${model} WHERE id = ${id}`, (err, row) => {
@@ -66,4 +108,5 @@ const getById = (model, id) => {
 
 
 // export the functions to be used elsewhere
-module.exports = {getAllEmployees, getAllMenus, getById};
+module.exports = {getAllEmployees, getAllMenus, getAllTimesheets,
+  getAllMenuItems, getById};

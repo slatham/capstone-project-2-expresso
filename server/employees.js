@@ -10,6 +10,12 @@ const employeesRouter = new express.Router();
 // export it so it can be celled in the api.js file
 module.exports = employeesRouter;
 
+// set up the timesheets router.  Employee has
+// many timesheets.  mount the router on the
+// employee id parameter
+const timesheetsRouter = require('./timesheets');
+employeesRouter.use('/:id/timesheets', timesheetsRouter);
+
 // require the sql file with all the
 // database functions
 const db = require('./sql');
