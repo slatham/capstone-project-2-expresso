@@ -48,6 +48,16 @@ menuItemsRouter.get('/', async (req, res, next) => {
 });
 
 // POST
+menuItemsRouter.post('/', async (req, res, next) => {
+  try {
+    // try running async function
+    const results = await db.addNewMenuItem(req.body, req.menuReturned.id);
+    // return the results from the promise
+    return res.status(201).json({menuItem: results});
+  } catch (e) {
+    next(e); // catch any errors returned and forward to error handler
+  };
+});
 
 // PUT
 

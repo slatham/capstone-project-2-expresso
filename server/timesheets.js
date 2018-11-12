@@ -54,6 +54,16 @@ timesheetsRouter.get('/', async (req, res, next) => {
 });
 
 // POST
+timesheetsRouter.post('/', async (req, res, next) => {
+  try {
+    // try running async function
+    const results = await db.addNewTimesheet(req.body, req.params.id);
+    // return the results from the promise
+    return res.status(201).json({timesheet: results});
+  } catch (e) {
+    next(e); // catch any errors returned and forward to error handler
+  };
+});
 
 // PUT
 

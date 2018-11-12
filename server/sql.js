@@ -168,6 +168,74 @@ const addNewMenu = (post) => {
   });
 };
 
+// add a new menu to the database
+const addNewMenuItem = (post, menuId) => {
+  return new Promise((resolve, reject) => {
+    db.run(`INSERT INTO MenuItem (name,description,inventory,price,menu_id)
+     VALUES ($name,$description,$inventory,$price,$menu_id)`, {
+      $name: post.menuItem.name,
+      $description: post.menuItem.description,
+      $inventory: post.menuItem.inventory,
+      $price: post.menuItem.price,
+      $menu_id: menuId,
+    }, function(err) {
+      if (err) {
+      // create new error object
+        const e = new Error('MenuItem not added!');
+        e.status = 500; // set a status on it
+        e.body = err; // add the err message as a body
+        return reject(e); // return a rejected promise
+      }
+      // send back the new menu item
+      db.get('SELECT * FROM MenuItem WHERE id = $id', {$id: this.lastID},
+          function(err, row) {
+            if (err) {
+            // create new error object
+              const e = new Error('New menu item not found!');
+              e.status = 404; // set a status on it
+              e.body = err; // add the err message as a body
+              return reject(e); // return a rejected promise
+            }
+            resolve(row);
+          });
+    });
+  });
+};
+
+// add a new timesheet to the database
+const addNewTimesheet = (post, employeeId) => {
+  return new Promise((resolve, reject) => {
+    db.run(`INSERT INTO Timesheet (hours,rate,date,employee_id)
+     VALUES ($hours,$rate,$date,$employee_id)`, {
+      $hours: post.timesheet.hours,
+      $rate: post.timesheet.rate,
+      $date: post.timesheet.date,
+      $employee_id: employeeId,
+    }, function(err) {
+      if (err) {
+      // create new error object
+        const e = new Error('Timesheet not added!');
+        e.status = 500; // set a status on it
+        e.body = err; // add the err message as a body
+        return reject(e); // return a rejected promise
+      }
+      // send back the new menu item
+      db.get('SELECT * FROM Timesheet WHERE id = $id', {$id: this.lastID},
+          function(err, row) {
+            if (err) {
+            // create new error object
+              const e = new Error('New timesheet item not found!');
+              e.status = 404; // set a status on it
+              e.body = err; // add the err message as a body
+              return reject(e); // return a rejected promise
+            }
+            resolve(row);
+          });
+    });
+  });
+};
+
 // export the functions to be used elsewhere
 module.exports = {getAllEmployees, getAllMenus, getAllTimesheets,
-  getAllMenuItems, getById, addNewEmployee, addNewMenu};
+  getAllMenuItems, getById, addNewEmployee, addNewMenu, addNewMenuItem,
+  addNewTimesheet};
