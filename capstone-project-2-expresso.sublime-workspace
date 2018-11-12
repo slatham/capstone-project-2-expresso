@@ -1,0 +1,558 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"publication",
+				"publication_date"
+			],
+			[
+				"seed",
+				"seed_data"
+			],
+			[
+				"art",
+				"artist_id"
+			],
+			[
+				"database",
+				"getFromDatabaseById"
+			],
+			[
+				"api",
+				"apiRouter"
+			],
+			[
+				"sav",
+				"saveDatabase"
+			],
+			[
+				"ar",
+				"articleId"
+			],
+			[
+				"cood",
+				"coordArray"
+			],
+			[
+				"for",
+				"forEach"
+			],
+			[
+				"coord",
+				"coordArray"
+			],
+			[
+				"neigh",
+				"neighbor"
+			],
+			[
+				"index",
+				"indexNumber"
+			],
+			[
+				"dama",
+				"damageImageName"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"file": "server/sql.js",
+			"settings":
+			{
+				"buffer_size": 8149,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "server/helperFunctions.js",
+			"settings":
+			{
+				"buffer_size": 98,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "server.js",
+			"settings":
+			{
+				"buffer_size": 1392,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "server/employees.js",
+			"settings":
+			{
+				"buffer_size": 2287,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "server/menuItems.js",
+			"settings":
+			{
+				"buffer_size": 1944,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "server/menus.js",
+			"settings":
+			{
+				"buffer_size": 2119,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "server/timesheets.js",
+			"settings":
+			{
+				"buffer_size": 2171,
+				"line_ending": "Unix"
+			}
+		}
+	],
+	"build_system": "",
+	"build_system_choices":
+	[
+	],
+	"build_varint": "",
+	"command_palette":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+			[
+				"install lin",
+				"Package Control: Install Package"
+			]
+		],
+		"width": 0.0
+	},
+	"console":
+	{
+		"height": 0.0,
+		"history":
+		[
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"expanded_folders":
+	[
+		"/Users/slatham/codecademy/projects/capstone-project-2-expresso",
+		"/Users/slatham/codecademy/projects/capstone-project-2-expresso/server"
+	],
+	"file_history":
+	[
+		"/Users/slatham/codecademy/projects/capstone-project-2-expresso/server/api.js",
+		"/Users/slatham/codecademy/projects/capstone-project-2-expresso/server/menuItems.js",
+		"/Users/slatham/codecademy/projects/capstone-project-2-expresso/server/helperFunctions.js",
+		"/Users/slatham/codecademy/projects/capstone-project-1-x-press-publishing/server/sql.js",
+		"/Users/slatham/codecademy/projects/capstone-project-1-x-press-publishing/server/series.js",
+		"/Users/slatham/codecademy/projects/capstone-project-1-x-press-publishing/server/issues.js",
+		"/Users/slatham/codecademy/projects/capstone-project-1-x-press-publishing/server/artists.js",
+		"/Users/slatham/codecademy/projects/project-2-beat-mix/server.js",
+		"/Users/slatham/codecademy/projects/project-4-boss-machine/server/api.js",
+		"/Users/slatham/codecademy/projects/project-2-beat-mix/presetHandler.js",
+		"/Users/slatham/codecademy/projects/capstone-project-1-x-press-publishing/server.js",
+		"/Users/slatham/codecademy/projects/capstone-project-1-x-press-publishing/migration.js",
+		"/Users/slatham/codecademy/projects/project-5-gold-medal-metrics/sql.js",
+		"/Users/slatham/codecademy/projects/capstone-project-1-x-press-publishing/seed.js",
+		"/Users/slatham/codecademy/projects/project-5-gold-medal-metrics/server.js",
+		"/Users/slatham/codecademy/projects/project-4-boss-machine/server/db.js",
+		"/Users/slatham/codecademy/projects/project-4-boss-machine/server/checkMillionDollarIdea.js",
+		"/Users/slatham/codecademy/projects/project-3-the-scoop/server.js",
+		"/Users/slatham/codecademy/projects/project-2-beat-mix/presets.json",
+		"/Users/slatham/codecademy/projects/project-2-beat-mix/test/test.js",
+		"/Users/slatham/codecademy/projects/project-2-beat-mix/public/js/script.js",
+		"/Users/slatham/codecademy/projects/project-2-beat-mix/public/js/play-logic.js",
+		"/Users/slatham/codecademy/projects/www/js/classes.js"
+	],
+	"find":
+	{
+		"height": 40.0
+	},
+	"find_in_files":
+	{
+		"height": 0.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"selected": 2,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "server/sql.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 8149,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"SL.55.region_keys":
+							[
+								"SL.eslint.Gutter.|region.redish markup.error.sublime_linter|dot",
+								"SL.eslint.Highlights.|ae21b9f85a340f4c11ad9a5fb76eca12874b500defd3e31763bf8651782ca69d|region.redish markup.error.sublime_linter|32",
+								"SL.eslint.Highlights.|0494f4f50da6d268741058736d3a536867ab267930a38943258282e2b149c3f9|region.redish markup.error.sublime_linter|32",
+								"SL.eslint.Highlights.|53bbe41fd72198515321243db065f314fa1e62b6a8650cbc5180542e82603872|region.redish markup.error.sublime_linter|32",
+								"SL.eslint.Highlights.|3402f5601ccdfc3502425ad48e66c25721986be39e2e27de57e3554f684048da|region.redish markup.error.sublime_linter|32",
+								"sublime_linter.protected_regions"
+							],
+							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "server/helperFunctions.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 98,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"SL.56.region_keys":
+							[
+							],
+							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "server.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1392,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"SL.57.region_keys":
+							[
+							],
+							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				}
+			]
+		},
+		{
+			"selected": 3,
+			"sheets":
+			[
+				{
+					"buffer": 3,
+					"file": "server/employees.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 2287,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"SL.50.region_keys":
+							[
+								"SL.eslint.Gutter.|region.redish markup.error.sublime_linter|dot",
+								"SL.eslint.Highlights.|90ce25e0f11e8495653c586644bda075e367bcf52e423bdd8352ae89fe05dd28|region.redish markup.error.sublime_linter|32",
+								"sublime_linter.protected_regions"
+							],
+							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 6,
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "server/menuItems.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1944,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"SL.52.region_keys":
+							[
+							],
+							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 5,
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"file": "server/menus.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 2119,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"SL.53.region_keys":
+							[
+							],
+							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 4,
+					"type": "text"
+				},
+				{
+					"buffer": 6,
+					"file": "server/timesheets.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 2171,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"SL.54.region_keys":
+							[
+							],
+							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 3,
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 24.0
+	},
+	"input":
+	{
+		"height": 0.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			],
+			[
+				1,
+				0,
+				2,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			0.5,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.SublimeLinter":
+	{
+		"height": 0.0
+	},
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"pinned_build_system": "",
+	"project": "capstone-project-2-expresso.sublime-project",
+	"replace":
+	{
+		"height": 44.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": true,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 257.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}
