@@ -61,4 +61,14 @@ menuItemsRouter.post('/', async (req, res, next) => {
 
 // PUT
 
-// DELETE
+// route to delete menuItems
+menuItemsRouter.delete('/:id', async (req, res, next) => {
+  try {
+    // try running async function
+    const results = await db.deleteById('menuItem', req.menuItemReturned.id);
+    // return the results from the promise
+    return res.status(204).json({menuItem: results});
+  } catch (e) {
+    next(e); // catch any errors returned and forward to error handler
+  };
+});

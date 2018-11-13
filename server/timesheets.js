@@ -68,3 +68,13 @@ timesheetsRouter.post('/', async (req, res, next) => {
 // PUT
 
 // DELETE
+timesheetsRouter.delete('/:id', async (req, res, next) => {
+  try {
+    // try running async function
+    const results = await db.deleteById('Timesheet', req.timesheetReturned.id);
+    // return the results from the promise
+    return res.status(204).json({timesheet: results});
+  } catch (e) {
+    next(e); // catch any errors returned and forward to error handler
+  };
+});

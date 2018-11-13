@@ -75,3 +75,13 @@ employeesRouter.post('/', async (req, res, next) => {
 // PUT
 
 // DELETE
+employeesRouter.delete('/:id', async (req, res, next) => {
+  try {
+    // try running async function
+    const results = await db.deleteById('Employee', req.employeeReturned.id);
+    // return the results from the promise
+    return res.status(200).json({employee: results});
+  } catch (e) {
+    next(e); // catch any errors returned and forward to error handler
+  };
+});

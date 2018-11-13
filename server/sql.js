@@ -114,12 +114,12 @@ const addNewEmployee = (post) => {
       $name: post.employee.name,
       $position: post.employee.position,
       $wage: post.employee.wage,
-      $is_current_employee: post.employee.isCurrentEmployee,
+      $is_current_employee: 1,
     }, function(err) {
       if (err) {
       // create new error object
         const e = new Error('Employee not added!');
-        e.status = 500; // set a status on it
+        e.status = 400; // set a status on it
         e.body = err; // add the err message as a body
         return reject(e); // return a rejected promise
       }
@@ -148,7 +148,7 @@ const addNewMenu = (post) => {
       if (err) {
       // create new error object
         const e = new Error('Menu not added!');
-        e.status = 500; // set a status on it
+        e.status = 400; // set a status on it
         e.body = err; // add the err message as a body
         return reject(e); // return a rejected promise
       }
@@ -182,7 +182,7 @@ const addNewMenuItem = (post, menuId) => {
       if (err) {
       // create new error object
         const e = new Error('MenuItem not added!');
-        e.status = 500; // set a status on it
+        e.status = 400; // set a status on it
         e.body = err; // add the err message as a body
         return reject(e); // return a rejected promise
       }
@@ -215,7 +215,7 @@ const addNewTimesheet = (post, employeeId) => {
       if (err) {
       // create new error object
         const e = new Error('Timesheet not added!');
-        e.status = 500; // set a status on it
+        e.status = 400; // set a status on it
         e.body = err; // add the err message as a body
         return reject(e); // return a rejected promise
       }
@@ -235,7 +235,47 @@ const addNewTimesheet = (post, employeeId) => {
   });
 };
 
+const deleteById = (model, id) => {
+  return new Promise((resolve, reject) => {
+    // code to delete all models except employee
+    if (model !== 'Employee') {
+      db.run(`DELETE FROM ${model} WHERE id = ${id}`, (err) => {
+        if (err) {
+          // create new error object
+          const e = new Error(`${model} not deleted!`);
+          e.status = 500; // set a status on it
+          e.body = err; // add the err message as a body
+          return reject(e); // return a rejected promise
+        }
+        resolve();
+      });
+    // code to delete an employee
+    } else {
+      db.run(`UPDATE Employee SET is_current_employee = 0 
+        WHERE id = ${id}`, (err) => {
+        if (err) {
+          // create new error object
+          const e = new Error(`Employee not deleted!`);
+          e.status = 500; // set a status on it
+          e.body = err; // add the err message as a body
+          return reject(e); // return a rejected promise
+        }
+        db.get(`SELECT * FROM Employee 
+          WHERE id = ${id}`, (err, row) => {
+          if (err) {
+            // create new error object
+            const e = new Error(`Deleted employee not found!`);
+            e.status = 404; // set a status on it
+            e.body = err; // add the err message as a body
+            return reject(e); // return a rejected promise
+          }
+          resolve(row);
+        });
+      });
+    }
+  });
+};
 // export the functions to be used elsewhere
 module.exports = {getAllEmployees, getAllMenus, getAllTimesheets,
   getAllMenuItems, getById, addNewEmployee, addNewMenu, addNewMenuItem,
-  addNewTimesheet};
+  addNewTimesheet, deleteById};

@@ -72,4 +72,22 @@ menusRouter.post('/', async (req, res, next) => {
 
 // PUT
 
-// DELETE
+// Route to delete a menu if there are no menuItems associated
+menusRouter.delete('/:id', async (req, res, next) => {
+  try {
+    // get the menu items for this menu (if there are any)
+    menuItems = await db.getAllMenuItems(req.menuReturned.id);
+    // if there are no menu items we can delete the menu
+    if (menuItems.length === 0) {
+      // try running async function
+      const results = await db.deleteById('Menu', req.menuReturned.id);
+      // return the results from the promise
+      return res.status(204).json({menu: results});
+    } else {
+      return res.status(400).send('MenuItems not empty!');
+    }
+  } catch (e) {
+    next(e); // catch any errors returned and forward to error handler
+  };
+});
+
