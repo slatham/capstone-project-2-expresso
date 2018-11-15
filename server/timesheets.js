@@ -66,8 +66,20 @@ timesheetsRouter.post('/', async (req, res, next) => {
 });
 
 // PUT
+timesheetsRouter.put('/:id', async (req, res, next) => {
+  try {
+    // try the promise and wait for it to return
+    const results = await db.updateTimesheet(req.body, req.timesheetReturned.id,
+        req.employeeReturned.id);
+    // return the results
+    return res.status(200).json({timesheet: results});
+  } catch (e) {
+    // send the error to the error handler middle-ware
+    next(e);
+  }
+});
 
-// DELETE
+// Route to delete timesheets by id
 timesheetsRouter.delete('/:id', async (req, res, next) => {
   try {
     // try running async function

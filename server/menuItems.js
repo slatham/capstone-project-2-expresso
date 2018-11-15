@@ -60,6 +60,18 @@ menuItemsRouter.post('/', async (req, res, next) => {
 });
 
 // PUT
+menuItemsRouter.put('/:id', async (req, res, next) => {
+  try {
+    // try the promise and wait for it to return
+    const results = await db.updateMenuItem(req.body, req.menuItemReturned.id,
+        req.menuReturned.id);
+    // return the results
+    return res.status(200).json({menuItem: results});
+  } catch (e) {
+    // send the error to the error handler middle-ware
+    next(e);
+  }
+});
 
 // route to delete menuItems
 menuItemsRouter.delete('/:id', async (req, res, next) => {

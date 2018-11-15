@@ -71,6 +71,17 @@ menusRouter.post('/', async (req, res, next) => {
 });
 
 // PUT
+menusRouter.put('/:id', async (req, res, next) => {
+  try {
+    // try the promise and wait for it to return
+    const results = await db.updateMenu(req.body, req.menuReturned.id);
+    // return the results
+    return res.status(200).json({menu: results});
+  } catch (e) {
+    // send the error to the error handler middle-ware
+    next(e);
+  }
+});
 
 // Route to delete a menu if there are no menuItems associated
 menusRouter.delete('/:id', async (req, res, next) => {

@@ -73,6 +73,17 @@ employeesRouter.post('/', async (req, res, next) => {
 });
 
 // PUT
+employeesRouter.put('/:id', async (req, res, next) => {
+  try {
+    // try the promise and wait for it to return
+    const results = await db.updateEmployee(req.body, req.employeeReturned.id);
+    // return the results
+    return res.status(200).json({employee: results});
+  } catch (e) {
+    // send the error to the error handler middle-ware
+    next(e);
+  }
+});
 
 // DELETE
 employeesRouter.delete('/:id', async (req, res, next) => {

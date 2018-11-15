@@ -275,7 +275,177 @@ const deleteById = (model, id) => {
     }
   });
 };
+
+// function to update an employee in the db from a PUT
+// request given the employee id
+const updateEmployee = (put, id) => {
+  // return a promise to do this
+  return new Promise((resolve, reject) => {
+    // run the slow async function
+    db.run(`UPDATE Employee SET name = $name,
+                  position = $position,
+                  wage = $wage, 
+                  is_current_employee = 1 
+        WHERE id = $id`, {
+      $name: put.employee.name,
+      $position: put.employee.position,
+      $wage: put.employee.wage,
+      $id: id,
+    }, (err) => {
+      // handle errors
+      if (err) {
+        // create a new error object
+        const error = new Error('Employee Not Updated');
+        error.status = 400; // set error status
+        error.body = err; // set error body
+        return reject(error); // reject the promise and send back the error
+      }
+      // get the newly updated employee from the db
+      db.get('SELECT * FROM Employee WHERE id = $id', {$id: id}, (err, row) =>{
+      // handle any error
+        if (err) {
+        // create a new error object
+          const error = new Error('Updated Employee Not Found');
+          error.status = 404; // set error status
+          error.body = err; // set error body
+          return reject(error); // reject the promise and send back the error
+        }
+        // resolve the promise by sending the
+        // updated issue back
+        resolve(row);
+      });
+    });
+  });
+};
+
+// function to update a menu in the db from a PUT
+// request given the menu id
+const updateMenu = (put, id) => {
+  // return a promise to do this
+  return new Promise((resolve, reject) => {
+    // run the slow async function
+    db.run(`UPDATE Menu SET title = $title
+        WHERE id = $id`, {
+      $title: put.menu.title,
+      $id: id,
+    }, (err) => {
+      // handle errors
+      if (err) {
+        // create a new error object
+        const error = new Error('Menu Not Updated');
+        error.status = 400; // set error status
+        error.body = err; // set error body
+        return reject(error); // reject the promise and send back the error
+      }
+      // get the newly updated menu from the db
+      db.get('SELECT * FROM Menu WHERE id = $id', {$id: id}, (err, row) =>{
+      // handle any error
+        if (err) {
+        // create a new error object
+          const error = new Error('Updated Menu Not Found');
+          error.status = 404; // set error status
+          error.body = err; // set error body
+          return reject(error); // reject the promise and send back the error
+        }
+        // resolve the promise by sending the
+        // updated issue back
+        resolve(row);
+      });
+    });
+  });
+};
+
+// function to update a timesheet in the db from a PUT
+// request given the timesheet id
+const updateTimesheet = (put, id, employeeId) => {
+  // return a promise to do this
+  return new Promise((resolve, reject) => {
+    // run the slow async function
+    db.run(`UPDATE Timesheet SET hours = $hours,
+        rate = $rate,
+        date = $date,
+        employee_id = $employee_id
+        WHERE id = $id`, {
+      $hours: put.timesheet.hours,
+      $rate: put.timesheet.rate,
+      $date: put.timesheet.date,
+      $employee_id: employeeId,
+      $id: id,
+    }, (err) => {
+      // handle errors
+      if (err) {
+        // create a new error object
+        const error = new Error('Timesheet Not Updated');
+        error.status = 400; // set error status
+        error.body = err; // set error body
+        return reject(error); // reject the promise and send back the error
+      }
+      // get the newly updated timesheet from the db
+      db.get('SELECT * FROM Timesheet WHERE id = $id', {$id: id}, (err, row) =>{
+      // handle any error
+        if (err) {
+        // create a new error object
+          const error = new Error('Updated Timesheet Not Found');
+          error.status = 404; // set error status
+          error.body = err; // set error body
+          return reject(error); // reject the promise and send back the error
+        }
+        // resolve the promise by sending the
+        // updated issue back
+        resolve(row);
+      });
+    });
+  });
+};
+
+// function to update a menuItem in the db from a PUT
+// request given the menuItem id
+const updateMenuItem = (put, id, menuId) => {
+  // return a promise to do this
+  return new Promise((resolve, reject) => {
+    // run the slow async function
+    db.run(`UPDATE MenuItem SET name = $name,
+        description = $description,
+        inventory = $inventory,
+        price = $price,
+        menu_id = $menu_id
+        WHERE id = $id`, {
+      $name: put.menuItem.name,
+      $description: put.menuItem.description,
+      $inventory: put.menuItem.inventory,
+      $price: put.menuItem.price,
+      $menu_id: menuId,
+      $id: id,
+    }, (err) => {
+      // handle errors
+      if (err) {
+        // create a new error object
+        const error = new Error('MenuItem Not Updated');
+        error.status = 400; // set error status
+        error.body = err; // set error body
+        return reject(error); // reject the promise and send back the error
+      }
+      // get the newly updated menuItem from the db
+      db.get('SELECT * FROM MenuItem WHERE id = $id', {$id: id}, (err, row) =>{
+      // handle any error
+        if (err) {
+        // create a new error object
+          const error = new Error('Updated MenuItem Not Found');
+          error.status = 404; // set error status
+          error.body = err; // set error body
+          return reject(error); // reject the promise and send back the error
+        }
+        // resolve the promise by sending the
+        // updated issue back
+        resolve(row);
+      });
+    });
+  });
+};
+
+
 // export the functions to be used elsewhere
 module.exports = {getAllEmployees, getAllMenus, getAllTimesheets,
   getAllMenuItems, getById, addNewEmployee, addNewMenu, addNewMenuItem,
-  addNewTimesheet, deleteById};
+  addNewTimesheet, deleteById, updateEmployee, updateMenu,
+  updateMenuItem, updateTimesheet};
