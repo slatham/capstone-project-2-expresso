@@ -19,7 +19,6 @@ const checkValidInput = (req, res, next) => {
   // loop through each of the fields required
   // for this model and check if they exist
   Object.keys(fields).forEach((requiredField) => {
-    console.log(requiredFields[model][requiredField]);
     // check if all the required fields exist in the POST / PUT
     if (!Object.keys(req.body[model]).includes(requiredField)) {
       // create new error object
@@ -28,13 +27,27 @@ const checkValidInput = (req, res, next) => {
       e.body = 'Validation Failed';
       return next(e); // send the error to the error handler
     } else {
-      // field mush have been found, check it is of the correct type
-      if (typeof req.body[model][requiredField] !== requiredFields[model][requiredField]) {
-        // create new error object
-        const e = new Error('field is wrong type');
-        e.status = 400; // set a status on it
-        e.body = 'Validation Failed';
-        next(e); // send the error to the error handler
+      // field must have been found, so check it is of the correct type
+      // if field should be a number, check it
+      if (requiredFields[model][requiredField] === 'number') {
+        // if not a number send the error
+        if (isNaN(req.body[model][requiredField])) {
+          // create new error object
+          const e = new Error(`${requiredField} field is not a number`);
+          e.status = 400; // set a status on it
+          e.body = 'Validation Failed';
+          next(e); // send the error to the error handler
+        }
+      // check if it is a valid string
+      } else if (requiredFields[model][requiredField] === 'string') {
+        // if not a string raise an error
+        if (typeof req.body[model][requiredField] !== 'string') {
+          // create new error object
+          const e = new Error(`${requiredField} field is wrong type`);
+          e.status = 400; // set a status on it
+          e.body = 'Validation Failed';
+          next(e); // send the error to the error handler
+        }
       }
     }
   });
