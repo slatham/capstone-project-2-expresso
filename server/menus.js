@@ -95,7 +95,10 @@ menusRouter.delete('/:id', async (req, res, next) => {
       // return the results from the promise
       return res.status(204).json({menu: results});
     } else {
-      return res.status(400).send('MenuItems not empty!');
+      // create new error object
+      const e = new Error('Menu has manuItem.  Can not delete!');
+      e.status = 400; // set a status on it
+      return next(e); // return a rejected promise
     }
   } catch (e) {
     next(e); // catch any errors returned and forward to error handler
