@@ -61,7 +61,7 @@ employeesRouter.get('/:id', (req, res, next) => {
 });
 
 // POST
-employeesRouter.post('/', async (req, res, next) => {
+employeesRouter.post('/', hlp.checkValidInput, async (req, res, next) => {
   try {
     // try running async function
     const results = await db.addNewEmployee(req.body);
@@ -73,7 +73,7 @@ employeesRouter.post('/', async (req, res, next) => {
 });
 
 // PUT
-employeesRouter.put('/:id', async (req, res, next) => {
+employeesRouter.put('/:id', hlp.checkValidInput, async (req, res, next) => {
   try {
     // try the promise and wait for it to return
     const results = await db.updateEmployee(req.body, req.employeeReturned.id);
