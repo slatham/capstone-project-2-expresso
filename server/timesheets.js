@@ -20,6 +20,8 @@ menuItemsRouter.use('/:id/menu-items', menuItemsRouter);
 // require the sql file with all the
 // database functions
 const db = require('./sql');
+// import helper functions
+const hlp = require('./helperFunctions');
 
 // router parameter function to parse id passed in all routes
 timesheetsRouter.param('id', async (req, res, next, id) => {
@@ -54,7 +56,7 @@ timesheetsRouter.get('/', async (req, res, next) => {
 });
 
 // POST
-timesheetsRouter.post('/', async (req, res, next) => {
+timesheetsRouter.post('/', hlp.checkValidInput, async (req, res, next) => {
   try {
     // try running async function
     const results = await db.addNewTimesheet(req.body, req.params.id);
@@ -66,7 +68,7 @@ timesheetsRouter.post('/', async (req, res, next) => {
 });
 
 // PUT
-timesheetsRouter.put('/:id', async (req, res, next) => {
+timesheetsRouter.put('/:id', hlp.checkValidInput, async (req, res, next) => {
   try {
     // try the promise and wait for it to return
     const results = await db.updateTimesheet(req.body, req.timesheetReturned.id,

@@ -11,6 +11,17 @@ const checkValidInput = (req, res, next) => {
     'menu': {
       'title': 'string',
     },
+    'timesheet': {
+      'hours': 'number',
+      'rate': 'number',
+      'date': 'number',
+    },
+    'menuItem': {
+      'name': 'string',
+      'description': 'string',
+      'inventory': 'number',
+      'price': 'number',
+    },
   };
   // determine the model to check - employee, menu, timesheet or menuItems
   const model = Object.keys(req.body)[0];

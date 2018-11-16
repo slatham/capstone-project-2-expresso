@@ -19,6 +19,8 @@ menusRouter.use('/:id/menu-items', menuItemsRouter);
 // require the sql file with all the
 // database functions
 const db = require('./sql');
+// import helper functions
+const hlp = require('./helperFunctions');
 
 // router parameter function to parse id passed in all routes
 menusRouter.param('id', async (req, res, next, id) => {
@@ -59,7 +61,7 @@ menusRouter.get('/:id', (req, res, next) => {
 });
 
 // POST
-menusRouter.post('/', async (req, res, next) => {
+menusRouter.post('/', hlp.checkValidInput, async (req, res, next) => {
   try {
     // try running async function
     const results = await db.addNewMenu(req.body);
@@ -71,7 +73,7 @@ menusRouter.post('/', async (req, res, next) => {
 });
 
 // PUT
-menusRouter.put('/:id', async (req, res, next) => {
+menusRouter.put('/:id', hlp.checkValidInput, async (req, res, next) => {
   try {
     // try the promise and wait for it to return
     const results = await db.updateMenu(req.body, req.menuReturned.id);
