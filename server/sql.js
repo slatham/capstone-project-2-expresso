@@ -90,6 +90,8 @@ const getAllMenuItems = (menuId) => {
   });
 };
 
+// function to get an item by id, given the
+// type of item to return
 const getById = (model, id) => {
   return new Promise((resolve, reject) => {
     db.get(`SELECT * FROM ${model} WHERE id = ${id}`, (err, row) => {
@@ -117,7 +119,7 @@ const addNewEmployee = (post) => {
       $is_current_employee: 1,
     }, function(err) {
       if (err) {
-      // create new error object
+        // create new error object
         const e = new Error('Employee not added!');
         e.status = 400; // set a status on it
         e.body = err; // add the err message as a body
@@ -168,7 +170,7 @@ const addNewMenu = (post) => {
   });
 };
 
-// add a new menu to the database
+// add a new menu item to the database
 const addNewMenuItem = (post, menuId) => {
   return new Promise((resolve, reject) => {
     db.run(`INSERT INTO MenuItem (name,description,inventory,price,menu_id)
@@ -219,7 +221,7 @@ const addNewTimesheet = (post, employeeId) => {
         e.body = err; // add the err message as a body
         return reject(e); // return a rejected promise
       }
-      // send back the new menu item
+      // send back the new timesheet
       db.get('SELECT * FROM Timesheet WHERE id = $id', {$id: this.lastID},
           function(err, row) {
             if (err) {
@@ -235,6 +237,9 @@ const addNewTimesheet = (post, employeeId) => {
   });
 };
 
+// delete an item by id, given its type
+// must not delete employee, instead it should
+// alter the employee record.
 const deleteById = (model, id) => {
   return new Promise((resolve, reject) => {
     // code to delete all models except employee
@@ -356,7 +361,7 @@ const updateMenu = (put, id) => {
 };
 
 // function to update a timesheet in the db from a PUT
-// request given the timesheet id
+// request given the timesheet id and the employee id
 const updateTimesheet = (put, id, employeeId) => {
   // return a promise to do this
   return new Promise((resolve, reject) => {

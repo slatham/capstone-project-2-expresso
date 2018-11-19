@@ -1,6 +1,6 @@
 
 /*
-This file handles all the express routing for employees route
+This file handles all the express routing for menus route
 */
 
 // set up express
@@ -11,7 +11,7 @@ const menusRouter = new express.Router();
 module.exports = menusRouter;
 
 // set up the menuItems router.  menu has
-// many menuItems.  mount the router on the
+// many menuItems.  Mount the router on the
 // menu id parameter
 const menuItemsRouter = require('./menuItems');
 menusRouter.use('/:id/menu-items', menuItemsRouter);
@@ -60,7 +60,7 @@ menusRouter.get('/:id', (req, res, next) => {
   res.status(200).json({menu: req.menuReturned});
 });
 
-// POST
+// POST route to create a new menu.  Checks valid in[put first]
 menusRouter.post('/', hlp.checkValidInput, async (req, res, next) => {
   try {
     // try running async function
@@ -72,7 +72,7 @@ menusRouter.post('/', hlp.checkValidInput, async (req, res, next) => {
   };
 });
 
-// PUT
+// PUT route to update a menu given its id, checks for valid input first
 menusRouter.put('/:id', hlp.checkValidInput, async (req, res, next) => {
   try {
     // try the promise and wait for it to return
@@ -106,4 +106,3 @@ menusRouter.delete('/:id', async (req, res, next) => {
     next(e); // catch any errors returned and forward to error handler
   };
 });
-

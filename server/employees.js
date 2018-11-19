@@ -60,7 +60,7 @@ employeesRouter.get('/:id', (req, res, next) => {
   res.status(200).json({employee: req.employeeReturned});
 });
 
-// POST
+// POST route to add a new employee - note we validate the input first
 employeesRouter.post('/', hlp.checkValidInput, async (req, res, next) => {
   try {
     // try running async function
@@ -72,7 +72,7 @@ employeesRouter.post('/', hlp.checkValidInput, async (req, res, next) => {
   };
 });
 
-// PUT
+// PUT route to update employee details.  We validate user input first
 employeesRouter.put('/:id', hlp.checkValidInput, async (req, res, next) => {
   try {
     // try the promise and wait for it to return
@@ -85,7 +85,7 @@ employeesRouter.put('/:id', hlp.checkValidInput, async (req, res, next) => {
   }
 });
 
-// DELETE
+// DELETE route to remove an employee
 employeesRouter.delete('/:id', async (req, res, next) => {
   try {
     // try running async function

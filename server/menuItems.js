@@ -49,7 +49,7 @@ menuItemsRouter.get('/', async (req, res, next) => {
   }
 });
 
-// POST
+// POST route to add new menu items, checking for valid input
 menuItemsRouter.post('/', hlp.checkValidInput, async (req, res, next) => {
   try {
     // try running async function
@@ -61,7 +61,7 @@ menuItemsRouter.post('/', hlp.checkValidInput, async (req, res, next) => {
   };
 });
 
-// PUT
+// PUT route to update menu items, checking for valid input
 menuItemsRouter.put('/:id', hlp.checkValidInput, async (req, res, next) => {
   try {
     // try the promise and wait for it to return

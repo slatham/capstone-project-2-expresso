@@ -1,7 +1,8 @@
 
-// function to validate fields on post requests
+// function to validate fields on post and put requests
 const checkValidInput = (req, res, next) => {
   // define what valid fields are required for each model
+  // and what type they should be
   const requiredFields = {
     'employee': {
       'name': 'string',
@@ -23,7 +24,8 @@ const checkValidInput = (req, res, next) => {
       'price': 'number',
     },
   };
-  // determine the model to check - employee, menu, timesheet or menuItems
+  // determine the current model to check - employee, menu,
+  // timesheet or menuItems based on the req.body
   const model = Object.keys(req.body)[0];
   // get the required fields for this current model
   const fields = requiredFields[model];

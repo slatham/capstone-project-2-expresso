@@ -32,11 +32,13 @@ app.use('/api', apiRouter);
 
 // custom error handler middle-ware (last in the list)
 app.use(function(error, req, res, next) {
+  /*
   console.log(`
   Message from error handler: ${error.message}
   Error: ${error.body}
   Status: ${error.status}
   `);
+  */
   res.status(error.status).json({message: error.message});
 });
 

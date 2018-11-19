@@ -11,12 +11,6 @@ const timesheetsRouter = new express.Router({mergeParams: true});
 // export it so it can be celled in the employee.js file
 module.exports = timesheetsRouter;
 
-// set up the menuItems router.  Menu has
-// many menuItems.  Mount the router on the
-// Menu id parameter
-const menuItemsRouter = require('./menuItems');
-menuItemsRouter.use('/:id/menu-items', menuItemsRouter);
-
 // require the sql file with all the
 // database functions
 const db = require('./sql');
@@ -55,7 +49,7 @@ timesheetsRouter.get('/', async (req, res, next) => {
   }
 });
 
-// POST
+// POST route to add a new timesheet
 timesheetsRouter.post('/', hlp.checkValidInput, async (req, res, next) => {
   try {
     // try running async function
@@ -67,7 +61,7 @@ timesheetsRouter.post('/', hlp.checkValidInput, async (req, res, next) => {
   };
 });
 
-// PUT
+// PUT route to update a timesheet
 timesheetsRouter.put('/:id', hlp.checkValidInput, async (req, res, next) => {
   try {
     // try the promise and wait for it to return
